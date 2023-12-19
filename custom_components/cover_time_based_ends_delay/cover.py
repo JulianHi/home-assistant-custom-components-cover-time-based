@@ -34,6 +34,7 @@ CONF_ALIASES = 'aliases'
 CONF_TRAVELLING_TIME_DOWN = 'travelling_time_down'
 CONF_TRAVELLING_TIME_UP = 'travelling_time_up'
 CONF_STICKY_TRAVEL_END_POSITIONS = 'sticky_travel_end_position'
+CONF_UNIQUE_ID = 'unique_id'
 
 DEFAULT_TRAVEL_TIME = 25
 DEFAULT_STICKY_TRAVEL_END_POSITIONS = False
@@ -59,6 +60,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
                     vol.Optional(CONF_STICKY_TRAVEL_END_POSITIONS, default=DEFAULT_STICKY_TRAVEL_END_POSITIONS):
                         cv.boolean,
+
+                    vol.Optional(CONF_UNIQUE_ID): cv.string,
                 }
             }
         ),
@@ -75,7 +78,8 @@ def devices_from_config(domain_config):
         sticky_travel_end_position = config.pop(CONF_STICKY_TRAVEL_END_POSITIONS)
         open_switch_entity_id = config.pop(CONF_OPEN_SWITCH_ENTITY_ID)
         close_switch_entity_id = config.pop(CONF_CLOSE_SWITCH_ENTITY_ID)
-        device = CoverTimeBased(device_id, name, travel_time_down, travel_time_up, sticky_travel_end_position, open_switch_entity_id, close_switch_entity_id)
+        unique_id = config.pop(CONF_UNIQUE_ID)
+        device = CoverTimeBased(device_id, unique_id, name, travel_time_down, travel_time_up, sticky_travel_end_position, open_switch_entity_id, close_switch_entity_id)
         devices.append(device)
     return devices
 
@@ -85,7 +89,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 class CoverTimeBased(CoverEntity, RestoreEntity):
 	
-    def __init__(self, device_id, name, travel_time_down, travel_time_up, sticky_travel_end_position,  open_switch_entity_id, close_switch_entity_id):
+    def __init__(self, device_id, unique_id, name, travel_time_down, travel_time_up, sticky_travel_end_position,  open_switch_entity_id, close_switch_entity_id):
         """Initialize the cover."""
         self._travel_time_down = travel_time_down
         self._travel_time_up = travel_time_up
@@ -97,6 +101,11 @@ class CoverTimeBased(CoverEntity, RestoreEntity):
             self._name = name
         else:
             self._name = device_id
+
+        if unique_id:
+            self._unique_id = unique_id
+        else:
+            self._unique_id = device_id
 		
         self._unsubscribe_auto_updater = None
 
@@ -125,6 +134,12 @@ class CoverTimeBased(CoverEntity, RestoreEntity):
     def name(self):
         """Return the name of the cover."""
         return self._name
+
+    @property
+    def unique_id(self) -> str:
+        """Return a unique, Home Assistant friendly identifier for this entity."""
+        return self._unique_id
+
 
     @property
     def device_state_attributes(self):
