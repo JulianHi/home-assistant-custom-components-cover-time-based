@@ -22,6 +22,8 @@ cover:
 	devices:
 	  room_rolling_shutter:
 	   name: Room Rolling Shutter
+	   unique_id: room_rolling_shutter # Unique id, needed to configure in HA
+       sticky_travel_end_position: true # if true, the Switch / device will not turn off at the end positions
 	   travelling_time_down: 23
 	   travelling_time_up: 25
 	   open_switch_entity_id: switch.wall_switch_right
