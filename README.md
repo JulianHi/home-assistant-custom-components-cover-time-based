@@ -12,7 +12,7 @@ Features:
 * Optional `unique_id`, so the entity can be managed in the Home Assistant UI. Defaults to the device id.
 
 ## Installation
-* Copy all files in custom_components/cover_time_based to your <config directory>/custom_components/cover_time_based/ directory.
+* Copy all files in custom_components/cover_time_based_ends_delay to your <config directory>/custom_components/cover_time_based_ends_delay/ directory.
 * Restart Home-Assistant.
 * Add the configuration to your configuration.yaml file.
 
@@ -23,7 +23,7 @@ To use this component in your installation, add the following to your configurat
 
 ```
 cover:
-  - platform: cover_time_based
+  - platform: cover_time_based_ends_delay
 	devices:
 	  room_rolling_shutter:
 	   name: Room Rolling Shutter
