@@ -7,7 +7,7 @@ Cover Time Based Component for your Home-Assistant (http://www.home-assistant.io
 With this component you can add a time-based cover. You can set a switch to open and another to close the cover. 
 For example, you can use an Aqara Wall Switch Double Key and standard 4 wire motor roller shutters to do this.
 
-<a href='https://ko-fi.com/A0A12HZT1' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<a href='https://ko-fi.com/julianhi' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 Features:
 * Position tracking is calculated locally (bundled `travelcalculator.py`, adapted from XKNX 0.9.4) - no external `xknx` requirement anymore.
