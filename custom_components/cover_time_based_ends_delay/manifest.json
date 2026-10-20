@@ -1,7 +1,7 @@
 {
   "domain": "cover_time_based_ends_delay",
   "name": "Cover Time Based",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "documentation": "https://github.com/JulianHi/home-assistant-custom-components-cover-time-based",
   "codeowners": ["@davidramosweb", "@nagyrobi", "@Alfiegerner", "@JulianHi"]
 }
