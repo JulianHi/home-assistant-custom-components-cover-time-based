@@ -1,4 +1,7 @@
 # Cover Time Based Component
+
+<img src="custom_components/cover_time_based_ends_delay/brand/icon@2x.png" width="96" align="right" alt="Cover Time Based icon">
+
 Cover Time Based Component for your Home-Assistant (http://www.home-assistant.io)
 
 With this component you can add a time-based cover. You can set a switch to open and another to close the cover. 
