@@ -78,7 +78,7 @@ def devices_from_config(domain_config):
         sticky_travel_end_position = config.pop(CONF_STICKY_TRAVEL_END_POSITIONS)
         open_switch_entity_id = config.pop(CONF_OPEN_SWITCH_ENTITY_ID)
         close_switch_entity_id = config.pop(CONF_CLOSE_SWITCH_ENTITY_ID)
-        unique_id = config.pop(CONF_UNIQUE_ID)
+        unique_id = config.pop(CONF_UNIQUE_ID, None)
         device = CoverTimeBased(device_id, unique_id, name, travel_time_down, travel_time_up, sticky_travel_end_position, open_switch_entity_id, close_switch_entity_id)
         devices.append(device)
     return devices
@@ -89,7 +89,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 class CoverTimeBased(CoverEntity, RestoreEntity):
 	
-    def __init__(self, device_id, unique_id, name, travel_time_down, travel_time_up, sticky_travel_end_position,  open_switch_entity_id, close_switch_entity_id):
+    def __init__(self, device_id, unique_id, name, travel_time_down, travel_time_up, sticky_travel_end_position, open_switch_entity_id, close_switch_entity_id):
         """Initialize the cover."""
         self._travel_time_down = travel_time_down
         self._travel_time_up = travel_time_up
